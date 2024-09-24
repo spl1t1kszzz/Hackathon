@@ -1,12 +1,10 @@
-using Hackathon.Staff;
-
-namespace Hackathon
+namespace Hackathon.Staff
 {
-    public class WishlistBuilder
+    public class RandomWishlistBuilder : IWishlistBuilder
     {
         private static readonly Random Random = new Random();
 
-        public static Wishlist BuildWishlist(int employeeId, int[] employees)
+        public Wishlist BuildWishlist(int employeeId, int[] employees)
         {
             // Random init
             for (var i = employees.Length - 1; i > 0; i--)

@@ -29,12 +29,13 @@ namespace Hackathon
             double sum = 0.0f;
             for (i = 1; i <= numberOfHackathons; ++i)
             {
+                var wishListBuilder = new RandomWishlistBuilder();
                 var juniorsWishLists = juniorsList.Select(junior =>
-                        WishlistBuilder.BuildWishlist(junior.Id,
+                        wishListBuilder.BuildWishlist(junior.Id,
                             teamleadsList.Select(teamlead => teamlead.Id).ToArray()))
                     .ToList();
                 var teamleadsWishLists = teamleadsList.Select(teamlead =>
-                        WishlistBuilder.BuildWishlist(teamlead.Id, juniorsList.Select(junior => junior.Id).ToArray()))
+                        wishListBuilder.BuildWishlist(teamlead.Id, juniorsList.Select(junior => junior.Id).ToArray()))
                     .ToList();
 
                 var teams = new HrManager().BuildTeams(teamleadsList, juniorsList, teamleadsWishLists,

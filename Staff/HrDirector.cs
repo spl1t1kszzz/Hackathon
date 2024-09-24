@@ -6,23 +6,18 @@ namespace Hackathon.Staff
             List<Wishlist> juniorWishLists,
             List<Wishlist> teamleadWishLists)
         {
-            var sum = 0.0f;
-            foreach (var team in teams)
-            {
-                // Текущий джун и тимлид
-                var junior = team.Junior;
-                var teamlead = team.TeamLead;
-                // Их списки предпочтений
-                var juniorWishlist = juniorWishLists.First(list => list.EmployeeId == junior.Id);
-                var teamleadWishList = teamleadWishLists.First(list => list.EmployeeId == teamlead.Id);
-                // Считаем индексы удовлетворённости
-                var juniorPoints = juniorWishlist.DesiredEmployees.Length -
-                                   juniorWishlist.DesiredEmployees.ToList().IndexOf(teamlead.Id);
-                var teamleadPoints = teamleadWishList.DesiredEmployees.Length -
-                                     teamleadWishList.DesiredEmployees.ToList().IndexOf(junior.Id);
-
-                sum += (1.0f / teamleadPoints) + (1.0f / juniorPoints);
-            }
+            var sum = (from team in teams
+                let junior = team.Junior
+                let teamlead = team.TeamLead
+                let juniorWishlist = juniorWishLists.First(list => list.EmployeeId == junior.Id)
+                let teamleadWishList = teamleadWishLists.First(list => list.EmployeeId == teamlead.Id)
+                let juniorPoints =
+                    juniorWishlist.DesiredEmployees.Length -
+                    juniorWishlist.DesiredEmployees.ToList().IndexOf(teamlead.Id)
+                let teamleadPoints =
+                    teamleadWishList.DesiredEmployees.Length -
+                    teamleadWishList.DesiredEmployees.ToList().IndexOf(junior.Id)
+                select (1.0f / teamleadPoints) + (1.0f / juniorPoints)).Sum();
 
             // В команде 2 человека
             return teams.Count * 2 / sum;

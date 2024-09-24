@@ -16,7 +16,7 @@ namespace Hackathon.csv
                     continue;
                 }
 
-                var values = line.Split(delimiter);
+                var values = line!.Split(delimiter);
                 data.Add(values);
             }
 
