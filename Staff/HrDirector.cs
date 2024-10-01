@@ -2,7 +2,7 @@ namespace Hackathon.Staff
 {
     public class HrDirector
     {
-        public static double CalculateMeanHarmonic(List<Team> teams,
+        public double CalculateMeanHarmonic(List<Team> teams,
             List<Wishlist> juniorWishLists,
             List<Wishlist> teamleadWishLists)
         {

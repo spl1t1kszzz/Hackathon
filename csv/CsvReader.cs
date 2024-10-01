@@ -1,6 +1,6 @@
 namespace Hackathon.csv
 {
-    public class CsvReader
+    public static class CsvReader
     {
         public static List<string[]> ReadCsvFile(string filePath, char delimiter, int skip)
         {
