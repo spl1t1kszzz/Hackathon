@@ -1,7 +1,4 @@
 ﻿using Hackathon.Staff;
-using NUnit.Framework;
-using System.Collections.Generic;
-using System.Linq;
 using Hackathon;
 
 namespace HackathonTests
@@ -21,7 +18,7 @@ namespace HackathonTests
         public void CalculateMeanHarmonic_SameNumbers_ReturnsSameValue()
         {
             var nums = new List<int> { 10, 10, 10, 10, 10 };
-            Assert.That(HmCounter.CountHM(nums), Is.EqualTo(10));
+            Assert.That(HmCounter.CountHm(nums), Is.EqualTo(10));
         }
 
 
@@ -29,7 +26,7 @@ namespace HackathonTests
         public void CalculateMeanHarmonic_DifferentValues_ReturnsExpectedResult()
         {
             var numbers2 = new List<int> { 12, 1, 5, 11, 4 };
-            Assert.That(HmCounter.CountHM(numbers2), Is.EqualTo(3.07835d).Within(0.0001));
+            Assert.That(HmCounter.CountHm(numbers2), Is.EqualTo(3.07835d).Within(0.0001));
         }
 
         [Test]

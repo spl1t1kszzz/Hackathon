@@ -39,12 +39,6 @@ public class HackathonTests
             new(5, new[] { 2, 1, 3 }),
             new(6, new[] { 3, 1, 2 })
         };
-        var teams = new List<Team>
-        {
-            new(teamLeads[0], juniors[0]),
-            new(teamLeads[1], juniors[1]),
-            new(teamLeads[2], juniors[2])
-        };
         var mh = hackathon.Run(juniors, teamLeads, juniorsWishlists, teamLeadsWishlists);
         Assert.That(mh, Is.EqualTo(3.0));
     }

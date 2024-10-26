@@ -1,4 +1,3 @@
-using Hackathon.csv;
 using Hackathon.Staff;
 
 namespace Hackathon.Model;
